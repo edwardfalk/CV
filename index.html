@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edward Falk — CV</title>
+  <meta name="description" content="Elektronikingenjör (inbyggda system) och IT‑konsult. FPGA, VHDL, embedded, AI‑automation, web & spel." />
+
+  <!-- Favicon: minimalist monogram (EF). Byt ut vid behov. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b0c0e'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='ui-sans-serif,Segoe UI,Roboto' font-size='58' font-weight='800' fill='%23ffffff'%3EEF%3C/text%3E%3C/svg%3E">
+
+  <!-- Social preview images (lägg og-light.png / og-dark.png i rotmappen) -->
+  <meta property="og:title" content="Edward Falk — CV" />
+  <meta property="og:description" content="Elektronikingenjör (inbyggda system) och IT‑konsult. FPGA, VHDL, embedded, AI‑automation, web & spel." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-light.png" />
+  <link rel="alternate" media="(prefers-color-scheme: dark)" href="og-dark.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edward Falk — CV" />
+  <meta name="twitter:description" content="Elektronikingenjör (inbyggda system) och IT‑konsult. FPGA, VHDL, embedded, AI‑automation, web & spel." />
+  <meta name="twitter:image" content="og-light.png" />
+  <meta name="color-scheme" content="light dark" />
+
+  <style>
+    :root{ --bg:#ffffff; --fg:#0b0c0e; --muted:#646b75; --card:#f6f7f9; --accent:#0ea5e9; --ring:#cbd5e1; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.08) }
+    @media (prefers-color-scheme: dark){ :root{ --bg:#0b0c0e; --fg:#e7e9ee; --muted:#9aa3af; --card:#121418; --accent:#38bdf8; --ring:#1f2937 } }
+    body{ font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Ubuntu, Cantarell, Helvetica, Arial; background:var(--bg); color:var(--fg); margin:0; line-height:1.5 }
+    .container{ max-width: 880px; margin: 32px auto; padding: 0 20px; position:relative }
+    header{ display:grid; gap:10px; align-items: center; grid-template-columns: 1fr auto; margin-bottom: 20px }
+    .title{ font-size: clamp(28px, 3.8vw, 44px); font-weight: 800 }
+    .subtitle{ color: var(--muted); margin-top:-8px }
+    .toolbar{ display:flex; gap:10px; flex-wrap: wrap; justify-content:flex-end }
+    .btn{ border:1px solid var(--ring); background:transparent; color:inherit; padding:8px 12px; border-radius:12px; cursor:pointer; font-weight:600; text-decoration:none }
+    .btn:hover{ border-color: var(--accent) }
+    section{ background: var(--card); border:1px solid var(--ring); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom:20px }
+    h2{ font-size: 18px; margin:0 0 8px 0 }
+    .muted{ color: var(--muted) }
+    .chip{ font-size: 12px; padding:4px 8px; border:1px solid var(--ring); border-radius:999px; margin:2px }
+    footer{ margin: 30px 0 60px; color: var(--muted); font-size: 14px }
+
+    /* Busig detalj: liten spindel */
+    #spider{ position:absolute; top:0; right:20px; font-size:22px; opacity:0; transition: transform 2.8s ease, opacity .6s ease }
+    @media (prefers-reduced-motion: reduce){ #spider{ display:none } }
+
+    /* Print */
+    #printHeader{ display:none }
+    @media print{ .toolbar, #liaCallout, #spider, #editor{ display:none !important } section{ box-shadow:none } #printHeader{ display:block; margin-bottom:10px } }
+
+    /* Inline editor (valfritt) */
+    #editor{ position: fixed; inset: 0; background: rgba(0,0,0,.55); display:none; place-items:center; padding:20px }
+    #editor .card{ width:min(900px, 96vw); background:var(--bg); color:var(--fg); border:1px solid var(--ring); border-radius:16px; box-shadow:var(--shadow); display:grid; grid-template-rows:auto 1fr auto }
+    #editor header{ grid-template-columns: 1fr auto; padding:14px 16px; margin:0 }
+    #editor textarea{ width:100%; height:60vh; border:none; resize:vertical; padding:16px; background:var(--card); color:var(--fg); font-family: ui-monospace, Menlo, Consolas, monospace; font-size:13px; border-top:1px solid var(--ring); border-bottom:1px solid var(--ring) }
+    #editor .actions{ display:flex; gap:10px; justify-content:flex-end; padding:12px 16px }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="spider">🕷️</div>
+    <header>
+      <div>
+        <div class="title" id="name">—</div>
+        <div class="subtitle" id="tagline">—</div>
+        <div class="chips" id="links"></div>
+      </div>
+      <nav class="toolbar">
+        <a class="btn" id="liaBtn" href="#">LIA / Praktik</a>
+        <button class="btn" id="printBtn">📄 PDF</button>
+        <button class="btn" id="editBtn" title="Redigera data (klient-sida)">Redigera data</button>
+      </nav>
+    </header>
+
+    <section id="liaCallout" style="border-color:var(--accent)">
+      <strong>Söker LIA/praktik i Göteborg (HT 2025)</strong>
+      <div class="muted">Inriktning: FPGA/VHDL, embedded, AI‑automation, realtids‑audio.</div>
+    </section>
+
+    <section id="about">
+      <h2>Profil</h2>
+      <p class="muted" id="summary">—</p>
+    </section>
+
+    <section id="experience">
+      <h2>Erfarenhet</h2>
+      <div id="experienceList"></div>
+    </section>
+
+    <section id="projects">
+      <h2>Projekt</h2>
+      <div class="chips" id="projectFilters" aria-label="Filtrera projekt (valfritt)"></div>
+      <ul id="projectList"></ul>
+    </section>
+
+    <section id="skills">
+      <h2>Färdigheter</h2>
+      <div id="skillsChips"></div>
+    </section>
+
+    <section id="edu">
+      <h2>Utbildning</h2>
+      <div id="eduList"></div>
+    </section>
+
+    <section id="meta">
+      <h2>Övrigt</h2>
+      <ul id="metaList"></ul>
+    </section>
+
+    <section id="printHeader" aria-hidden="true">
+      <h1 id="printName">—</h1>
+      <div class="muted" id="printTagline">—</div>
+      <div class="chips" id="printContacts"></div>
+    </section>
+
+    <footer>
+      <div>Detta CV laddar data från <code>/data/cv.json</code> (eller <code>?data=URL</code>). © <span id="year"></span> <span id="footerName">—</span>.</div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (s,el=document)=>el.querySelector(s); const $$=(s,el=document)=>[...el.querySelectorAll(s)];
+    $('#year').textContent = new Date().getFullYear();
+    let selected = new Set(); let DATA = {};
+
+    // Hämta JSON: ?data=... prioriteras, annars /data/cv.json
+    async function loadData(){
+      const url = new URL(location.href); const src = url.searchParams.get('data') || '/data/cv.json';
+      try{ const res = await fetch(src, {cache:'no-cache'}); if(res.ok) return await res.json(); }catch{}
+      return {};
+    }
+
+    function renderProjects(){
+      const list = $('#projectList'); const items = (DATA.projects||[]).filter(p=> selected.size===0 || (p.tags||[]).some(t=>selected.has(t)) );
+      list.innerHTML = items.map(p=>{
+        const title = p.link?`<strong><a href='${p.link}' target='_blank' rel='noreferrer noopener'>${p.title}</a></strong>`:`<strong>${p.title}</strong>`;
+        const tags = (p.tags||[]).map(t=>`<span class='chip'>${t}</span>`).join('');
+        return `<li>${title} — ${p.desc} ${tags?`<span class='muted'> · ${tags}</span>`:''}</li>`;
+      }).join('');
+    }
+
+    function buildFilters(){
+      const f = $('#projectFilters'); const allTags = [...new Set((DATA.projects||[]).flatMap(p=>p.tags||[]))];
+      f.innerHTML = allTags.map(tag=>`<button class='btn' data-tag='${tag}' aria-pressed='${selected.has(tag)}'>${tag}</button>`).join('');
+      f.onclick = (e)=>{ const b=e.target.closest('button[data-tag]'); if(!b) return; const t=b.dataset.tag; if(selected.has(t)) selected.delete(t); else selected.add(t); $$('button[data-tag]', f).forEach(btn=>{ const k=btn.dataset.tag; btn.setAttribute('aria-pressed', selected.has(k)); btn.style.borderColor = selected.has(k)?'var(--accent)':'var(--ring)'; }); renderProjects(); };
+    }
+
+    function render(){
+      $('#name').textContent = DATA.name||''; $('#printName').textContent = DATA.name||''; $('#footerName').textContent = DATA.name||'';
+      $('#tagline').textContent = DATA.tagline||''; $('#printTagline').textContent = DATA.tagline||'';
+      $('#summary').textContent = DATA.summary||'';
+      $('#links').innerHTML = (DATA.links||[]).map(l=>`<a class="chip" href="${l.href}" target="_blank" rel="noreferrer noopener">${l.label}</a>`).join('');
+      $('#printContacts').innerHTML = (DATA.links||[]).filter(l=>/mailto:|https?:\/\//.test(l.href)).slice(0,3).map(l=>`<span class='chip'>${l.label}</span>`).join('');
+      $('#experienceList').innerHTML = (DATA.experience||[]).map(e=>`<article class='item'><div><strong>${e.org}</strong> — ${e.role} <span class='muted'>(${e.when})</span></div><ul>${(e.points||[]).map(p=>`<li>${p}</li>`).join('')}</ul></article>`).join('');
+      $('#skillsChips').innerHTML = (DATA.skills||[]).map(s=>`<span class='chip'>${s}</span>`).join('');
+      $('#eduList').innerHTML = (DATA.education||[]).map(ed=>`<article class="item"><div><strong>${ed.school}</strong> <span class="muted">(${ed.when})</span></div><div>${ed.study||''}</div></article>`).join('');
+      const meta = (DATA.meta||[]).concat(Array.isArray(DATA.interests)&&DATA.interests.length?['Intressen: '+DATA.interests.join(', ')] : []);
+      $('#metaList').innerHTML = meta.map(m=>`<li>${m}</li>`).join('');
+
+      // LIA-knapp
+      const mail = (DATA.links||[]).find(l=>/^mailto:/i.test(l.href));
+      $('#liaBtn').href = mail? `mailto:${mail.href.replace(/^mailto:/i,'')}?subject=LIA%20HT%202025%20–%20${encodeURIComponent(DATA.name||'')}` : '#';
+
+      buildFilters(); renderProjects();
+    }
+
+    (async function(){
+      DATA = await loadData(); render();
+      $('#printBtn').onclick = ()=>window.print();
+      $('#editBtn').onclick = ()=>{ const ed=$('#editor'); const ta=$('#jsonArea'); ta.value = JSON.stringify(DATA, null, 2); ed.style.display='grid'; ta.focus(); };
+      (function(){ const sp=$('#spider'); if(!sp) return; let active=false; function roam(){ if(active) return; if(Math.random()<0.2){ active=true; const vw=window.innerWidth; const x=Math.max(10, Math.min(vw-40, 50+Math.random()*vw*0.6)); const y=Math.max(10, 160+Math.random()*40); sp.style.opacity=.9; sp.style.transform=`translate(${x}px, ${y}px)`; setTimeout(()=>{ sp.style.opacity=0; active=false; }, 3000);} } setInterval(roam, 8000); })();
+      // Editor actions (frivilligt: lagra lokalt för test)
+      $('#saveJson').onclick = ()=>{ try{ DATA = JSON.parse($('#jsonArea').value); render(); localStorage.setItem('cv-json', JSON.stringify(DATA)); $('#editor').style.display='none'; }catch(e){ alert('Ogiltig JSON: '+e.message) } };
+      $('#downloadJson').onclick = ()=>{ const blob = new Blob([$('#jsonArea').value], {type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='cv.json'; a.click(); };
+      $('#closeEditor').onclick = ()=>$('#editor').style.display='none';
+      window.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='e' && (e.ctrlKey||e.metaKey)) $('#editBtn').click(); });
+    })();
+  </script>
+
+  <!-- Editor Modal (valfri) -->
+  <div id="editor" role="dialog" aria-modal="true" aria-labelledby="editorTitle" style="display:none">
+    <div class="card">
+      <header>
+        <div class="title" id="editorTitle">Redigera data (JSON)</div>
+        <div class="toolbar"><button class="btn" id="closeEditor">Stäng</button></div>
+      </header>
+      <textarea id="jsonArea" spellcheck="false"></textarea>
+      <div class="actions">
+        <button class="btn" id="downloadJson">Ladda ned JSON</button>
+        <button class="btn" id="saveJson">Spara lokalt</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

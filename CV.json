@@ -1,0 +1,36 @@
+{
+  "name": "Edward Falk",
+  "tagline": "Elektronikingenjör (inbyggda system) · IT-konsult · Musiker",
+  "summary": "Studerar till elektronikingenjör på Yrgo (inbyggda system). Driver eget företag, Falk Data, inom IT-support och konsulting. Erfarenhet av FPGA/VHDL, inbyggda system, AI-automation, ljud och musikproduktion.",
+  "links": [
+    {"label":"falkdata.se", "href":"https://falkdata.se"},
+    {"label":"GitHub", "href":"https://github.com/edwardfalk"},
+    {"label":"LinkedIn", "href":"https://www.linkedin.com/in/edward-falk"},
+    {"label":"E-post", "href":"mailto:edward@falkdata.se"}
+  ],
+  "experience": [
+    {
+      "org":"Falk Data",
+      "role":"IT-konsult / Datorsupport",
+      "when":"2015–pågår",
+      "points":["Felsökning, support och reparation av datorer","Konsultuppdrag inom IT-drift och säkerhet"]
+    },
+    {
+      "org":"Musiker",
+      "role":"Gitarr, synth, musikproduktion",
+      "when":"2008–pågår",
+      "points":["Liveframträdanden och musikskapande","Produktion och mixning med digitala verktyg"]
+    }
+  ],
+  "projects": [
+    {"title":"Cosmic Vibe","desc":"Rytmiskt rymdskjutarspel byggt i Cursor med p5.js.","link":"https://edwardfalk.github.io/vibe/","tags":["Spel","JavaScript"]},
+    {"title":"Synthbygge","desc":"Eget bygge av analog synth och förstärkare.","tags":["Audio","Hardware"]},
+    {"title":"Autonom bil","desc":"Byggd på Elegoo Smart Car V4.0 med extra sensorer (LiDAR, IMU).","tags":["FPGA","Embedded","AI"]}
+  ],
+  "skills": ["FPGA","VHDL","Embedded C","Python","Rust","AI-automation","Elektronik","Ljudteknik"],
+  "education": [
+    {"school":"Yrgo Göteborg","when":"2024–2026","study":"Elektronikingenjör, inbyggda system"}
+  ],
+  "meta": ["Ort: Göteborg","Driver Falk Data sedan 2015"],
+  "interests": ["Musik och ljud","Spelutveckling","AI och automation","Elektronikbyggen"]
+}
