@@ -21,3 +21,20 @@ test('each link has label and href', () => {
     assert.ok(link.href && link.href.trim(), 'link href required');
   }
 });
+
+test('summary is a non-empty string', () => {
+  assert.strictEqual(typeof cv.summary, 'string', 'summary must be a string');
+  assert.ok(cv.summary.trim().length > 0, 'summary cannot be empty');
+});
+
+test('experience entries have required fields', () => {
+  assert.ok(Array.isArray(cv.experience) && cv.experience.length > 0, 'experience must be non-empty array');
+  for (const exp of cv.experience) {
+    assert.ok(exp.org && exp.org.trim(), 'experience org required');
+    assert.ok(exp.role && exp.role.trim(), 'experience role required');
+    assert.ok(exp.when && exp.when.trim(), 'experience when required');
+    if (exp.points !== undefined) {
+      assert.ok(Array.isArray(exp.points), 'experience points must be an array if provided');
+    }
+  }
+});
