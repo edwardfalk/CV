@@ -23,7 +23,8 @@
 
   <style>
     :root{ --bg:#ffffff; --fg:#0b0c0e; --muted:#646b75; --card:#f6f7f9; --accent:#0ea5e9; --ring:#cbd5e1; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.08) }
-    @media (prefers-color-scheme: dark){ :root{ --bg:#0b0c0e; --fg:#e7e9ee; --muted:#9aa3af; --card:#121418; --accent:#38bdf8; --ring:#1f2937 } }
+    :root[data-theme="dark"]{ --bg:#0b0c0e; --fg:#e7e9ee; --muted:#9aa3af; --card:#121418; --accent:#38bdf8; --ring:#1f2937 }
+    @media (prefers-color-scheme: dark){ :root:not([data-theme]){ --bg:#0b0c0e; --fg:#e7e9ee; --muted:#9aa3af; --card:#121418; --accent:#38bdf8; --ring:#1f2937 } }
     body{ font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Ubuntu, Cantarell, Helvetica, Arial; background:var(--bg); color:var(--fg); margin:0; line-height:1.5 }
     .container{ max-width: 880px; margin: 32px auto; padding: 0 20px; position:relative }
     header{ display:grid; gap:10px; align-items: center; grid-template-columns: 1fr auto; margin-bottom: 20px }
@@ -67,6 +68,11 @@
         <a class="btn" id="liaBtn" href="#">LIA / Praktik</a>
         <button class="btn" id="printBtn">📄 PDF</button>
         <button class="btn" id="editBtn" title="Redigera data (klient-sida)">Redigera data</button>
+        <select class="btn" id="themeToggle" title="Tema">
+          <option value="auto">Auto</option>
+          <option value="light">Ljust</option>
+          <option value="dark">Mörkt</option>
+        </select>
       </nav>
     </header>
 
@@ -113,19 +119,26 @@
     </section>
 
     <footer>
-      <div>Detta CV laddar data från <code>/data/cv.json</code> (eller <code>?data=URL</code>). © <span id="year"></span> <span id="footerName">—</span>.</div>
+      <div>Detta CV laddar data från <code>data/cv.json</code> (med fallback till <code>CV.json</code> eller <code>?data=URL</code>). © <span id="year"></span> <span id="footerName">—</span>.</div>
     </footer>
   </div>
 
+  <script src="theme.js"></script>
   <script>
     const $ = (s,el=document)=>el.querySelector(s); const $$=(s,el=document)=>[...el.querySelectorAll(s)];
     $('#year').textContent = new Date().getFullYear();
     let selected = new Set(); let DATA = {};
 
-    // Hämta JSON: ?data=... prioriteras, annars /data/cv.json
+    // Hämta JSON: ?data=... prioriteras, annars data/cv.json med fallback till CV.json
     async function loadData(){
-      const url = new URL(location.href); const src = url.searchParams.get('data') || '/data/cv.json';
-      try{ const res = await fetch(src, {cache:'no-cache'}); if(res.ok) return await res.json(); }catch{}
+      const url = new URL(location.href);
+      const sources = [url.searchParams.get('data'), 'data/cv.json', 'CV.json'].filter(Boolean);
+      for (const src of sources) {
+        try {
+          const res = await fetch(src, { cache: 'no-cache' });
+          if (res.ok) return await res.json();
+        } catch {}
+      }
       return {};
     }
 
