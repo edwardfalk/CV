@@ -38,3 +38,13 @@ test('experience entries have required fields', () => {
     }
   }
 });
+
+test('projects have title and desc', () => {
+  if (cv.projects !== undefined) {
+    assert.ok(Array.isArray(cv.projects), 'projects must be an array');
+    for (const p of cv.projects) {
+      assert.ok(p.title && p.title.trim(), 'project title required');
+      assert.ok(p.desc && p.desc.trim(), 'project desc required');
+    }
+  }
+});

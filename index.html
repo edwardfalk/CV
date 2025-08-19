@@ -113,7 +113,7 @@
     </section>
 
     <footer>
-      <div>Detta CV laddar data från <code>/data/cv.json</code> (eller <code>?data=URL</code>). © <span id="year"></span> <span id="footerName">—</span>.</div>
+      <div>Detta CV laddar data från <code>data/cv.json</code> (med fallback till <code>CV.json</code> eller <code>?data=URL</code>). © <span id="year"></span> <span id="footerName">—</span>.</div>
     </footer>
   </div>
 
@@ -122,10 +122,16 @@
     $('#year').textContent = new Date().getFullYear();
     let selected = new Set(); let DATA = {};
 
-    // Hämta JSON: ?data=... prioriteras, annars /data/cv.json
+    // Hämta JSON: ?data=... prioriteras, annars data/cv.json med fallback till CV.json
     async function loadData(){
-      const url = new URL(location.href); const src = url.searchParams.get('data') || '/data/cv.json';
-      try{ const res = await fetch(src, {cache:'no-cache'}); if(res.ok) return await res.json(); }catch{}
+      const url = new URL(location.href);
+      const sources = [url.searchParams.get('data'), 'data/cv.json', 'CV.json'].filter(Boolean);
+      for (const src of sources) {
+        try {
+          const res = await fetch(src, { cache: 'no-cache' });
+          if (res.ok) return await res.json();
+        } catch {}
+      }
       return {};
     }
 
