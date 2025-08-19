@@ -12,7 +12,7 @@
     {
       "org":"Falk Data",
       "role":"IT-konsult / Datorsupport",
-      "when":"2015–pågår",
+      "when":"2005–pågår",
       "points":["Felsökning, support och reparation av datorer","Konsultuppdrag inom IT-drift och säkerhet"]
     },
     {
@@ -31,6 +31,6 @@
   "education": [
     {"school":"Yrgo Göteborg","when":"2024–2026","study":"Elektronikingenjör, inbyggda system"}
   ],
-  "meta": ["Ort: Göteborg","Driver Falk Data sedan 2015"],
+  "meta": ["Ort: Göteborg","Driver Falk Data sedan 2005"],
   "interests": ["Musik och ljud","Spelutveckling","AI och automation","Elektronikbyggen"]
 }
